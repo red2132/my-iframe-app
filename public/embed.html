@@ -25,21 +25,29 @@
         width: 300px;
         margin-top: 20px;
         border-radius: 8px;
-      }
-      h1 {
-        color: #3d53ff;
+        cursor: pointer;
       }
     </style>
   </head>
   <body>
     <div class="box">
-      <h1>Base64 Embedded HTML</h1>
-      <p>외부 이미지를 불러오는 예제입니다.</p>
+      <h1>이미지 클릭 테스트</h1>
+      <p>이미지를 클릭하면 alert가 뜹니다.</p>
 
       <img
+        id="testImage"
         src="https://image.shop.kt.com/upload/product/WL00075905/1757487019995.png"
-        alt="External Image"
+        alt="Clickable Image"
       />
     </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const img = document.getElementById("testImage");
+        img.addEventListener("click", function () {
+          alert("이미지가 클릭되었습니다!");
+        });
+      });
+    </script>
   </body>
 </html>
