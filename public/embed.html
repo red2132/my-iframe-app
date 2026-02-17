@@ -9,6 +9,7 @@
         background: #f4f6ff;
         font-family: Arial, sans-serif;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         height: 100vh;
@@ -18,6 +19,12 @@
         background: white;
         border-radius: 12px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      img {
+        width: 300px;
+        margin-top: 20px;
+        border-radius: 8px;
       }
       h1 {
         color: #3d53ff;
@@ -27,7 +34,12 @@
   <body>
     <div class="box">
       <h1>Base64 Embedded HTML</h1>
-      <p>이 페이지는 base64로 인코딩되어 iframe에 렌더링되었습니다.</p>
+      <p>외부 이미지를 불러오는 예제입니다.</p>
+
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Fronalpstock_big.jpg"
+        alt="External Image"
+      />
     </div>
   </body>
 </html>
