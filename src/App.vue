@@ -2,10 +2,7 @@
   <div class="container">
     <h2>Vue Base64 Iframe Example</h2>
 
-    <iframe
-      v-if="iframeSrc"
-      src="https://ktevent.co.kr/event/2026SaveCare/m/index.asp"
-    />
+    <iframe v-if="iframeSrc" :src="iframeSrc" class="frame" />
   </div>
 </template>
 
