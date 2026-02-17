@@ -1,53 +1,320 @@
 <!doctype html>
-<html>
+<html lang="ko">
   <head>
-    <meta charset="UTF-8" />
-    <title>Embedded Page</title>
-    <style>
-      body {
-        margin: 0;
-        background: #f4f6ff;
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
+    <meta http-equiv="content-Type" content="text/html; charset=utf-8" />
+    <meta
+      http-equiv="X-UA-Compatible"
+      id="X-UA-Compatible"
+      content="IE=edge,chrome=1"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"
+    />
+
+    <title>아껴드림 여행자보험 퀴즈 이벤트</title>
+    <meta name="Author-Date" content="2018-10-01" />
+    <meta name="Description" content="아껴드림 여행자보험 퀴즈 이벤트" />
+    <meta name="Keyword" content="아껴드림, 여행자보험, 퀴즈, 이벤트" />
+
+    <link
+      rel="shortcut icon"
+      href="https://www.kt.com/images/common/favicon/kt.ico"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css"
+    />
+    <!-- <link type="text/css" href="/event/cssNew/m/reset.css" rel="stylesheet" /> -->
+    <link
+      type="text/css"
+      href="/event/cssNew/m/layer_pop.css?190403"
+      rel="stylesheet"
+    />
+    <script src="https://m.kt.com/js/ADOBE/mstaticsLogcodeLaunch.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/SSLApply.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-E937FRTV5D"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
       }
-      .box {
-        padding: 40px;
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        text-align: center;
+      gtag("js", new Date());
+
+      gtag("config", "G-E937FRTV5D");
+    </script>
+    <script>
+      function iframeRisize_idea() {
+        var SendData = {
+          iframe_h: $(".event").height(), // 현재페이지 wrap id값 or class값 넣기
+        };
+        window.parent.postMessage(SendData, "https://m.kt.com");
+      }
+
+      function ftnscrollTop() {
+        var SendData = {
+          scrollTopYN: "Y",
+        };
+        window.parent.postMessage(SendData, "https://m.kt.com");
+      }
+
+      $(window).load(function () {
+        iframeRisize_idea();
+        //$(window).scrollTop(0);
+      });
+
+      $(window).resize(function () {
+        iframeRisize_idea();
+        //$(window).scrollTop(0);
+      });
+
+      /*응모 하기*/
+      function EntryOnclick(CouponType) {
+        alert("이벤트가 종료되었습니다.");
+        return;
+      }
+
+      /*당첨 확인*/
+      function EntryOnclick01(CouponType) {
+        alert("이벤트가 종료되었습니다.");
+        return;
+      }
+
+      /*쿠폰 받기*/
+      function EntryFAQ() {
+        location.href = "./Entry/FAQ.asp";
+        iframeRisize_idea();
+      }
+      /*롭스 바로가기*/
+      function site_go() {
+        var WindowOpen = window.open("about:blank");
+        //		WindowOpen.location.href  = "https://m.tvmobile.kt.com";
+        WindowOpen.location.href = "http://m.tvmobile.kt.com";
+        return false;
+      }
+    </script>
+    <style>
+      @font-face {
+        font-family: "Gmarket1";
+        src: url("./font/GmarketSansTTFLight.woff");
+        src: url("./font/GmarketSansTTFLight.woff") format(‘woff’);
+        font-weight: normal;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Gmarket2";
+        src: url("./font/GmarketSansTTFBold.woff");
+        src: url("./font/GmarketSansTTFBold.woff") format(‘woff’);
+        font-weight: normal;
+        font-style: normal;
+      }
+      .event {
+        width: 640px;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+      }
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      p,
+      h1,
+      div,
+      ul {
+        position: relative;
+        margin: 0;
+        padding: 0;
+      }
+      div a,
+      p a,
+      h1 a {
+        position: absolute;
+        display: block;
       }
       img {
-        width: 300px;
-        margin-top: 20px;
-        border-radius: 8px;
-        cursor: pointer;
+        display: block;
+        width: 100%;
+      }
+      input {
+        width: 74%;
+        bottom: 19%;
+        position: absolute;
+        display: block;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 28px;
+        text-align: center;
+        padding: 20px 0;
+        border-radius: 50px;
+        border: 2px solid #aaa;
+        font-weight: bold;
+        font-family: "Gmarket1";
+      }
+      a {
+        bottom: 9.9%;
+        position: absolute;
+        display: block;
+        width: 35.5%;
+      }
+      .btn_01 {
+        left: 13%;
+      }
+      .btn_02 {
+        right: 13%;
+      }
+
+      @media screen and (max-width: 640px) {
+        .event {
+          width: 100%;
+        }
+        input {
+          font-size: 4vw;
+          padding: 3vw 0;
+        }
       }
     </style>
   </head>
   <body>
-    <div class="box">
-      <h1>이미지 클릭 테스트</h1>
-      <p>이미지를 클릭하면 alert가 뜹니다.</p>
+    <div class="event">
+      <form name="FrmEntry" id="FrmEntry" method="post">
+        <input type="hidden" name="isKind" id="isKind" value="" />
+        <input type="hidden" name="Incode" id="Incode" value="" />
 
-      <img
-        id="testImage"
-        src="https://image.shop.kt.com/upload/product/WL00075905/1757487019995.png"
-        alt="Clickable Image"
-      />
+        <div class="visual">
+          <h1>
+            <img
+              src="/event/2026SaveCare/img/2602/visual.jpg"
+              alt="
+				매일매일 선물이 쏟아지는 퀴즈 이벤트.
+				퀴즈 풀고 선물 받고. N pay.
+				Q. 아껴드림 여행자보험은 즉시 □□% 할인쿠폰을 제공한다?!
+				*당첨자 명단은 매주 금요일 업데이트 됩니다.
+			"
+            />
+          </h1>
+          <!-- 숫자만 입력하세요 입력 창-->
+          <input
+            type="text"
+            name="onlyNumber"
+            class="number_only"
+            id="onlyNumber"
+            placeholder="정답을 입력하세요."
+            inputmode="numeric"
+            maxlength="2"
+          />
+          <a class="btn_01" href="javascript:;" onclick="EntryOnclick()"
+            ><img
+              src="/event/2026SaveCare/img/2602/btn_01.png"
+              alt="응모하기(새창열림)"
+          /></a>
+          <a class="btn_02" href="javascript:;" onclick="EntryOnclick01()"
+            ><img
+              src="/event/2026SaveCare/img/2602/btn_02.png"
+              alt="당첨확인(새창열림)"
+          /></a>
+        </div>
+        <div>
+          <img
+            src="/event/2026SaveCare/img/2602/cont_01.jpg"
+            alt="
+			HINT 보기.
+			아껴드림 여행자보험 대표 보장안내!
+			상해 및 질병 보장.
+			해외여행 중 배상책임.
+			항공기 지연 및 수화물 분실 보장.
+			여권분실 후 재발급 비용.
+			해외 의료비 보장.
+			국내실손의료비(질병/상해)
+			- 선택한 플랜에 따라 보장이 다를 수 있습니다. -
+			가입 시 10% 할인쿠폰 즉시 제공.
+		"
+          />
+        </div>
+        <div>
+          <img
+            src="/event/2026SaveCare/img/2602/cont_02.jpg"
+            alt="
+			이벤트 안내.
+			참여방법.
+			퀴즈 정답을 입력하고 응모해 주세요.
+			이벤트가 끝날 때까지 매일 1번씩 응모 가능해요. (매일매일 중복 당첨 가능!)
+			매주 금요일, 이벤트 당첨자를 선정해 선물을 드려요.
+			일정 : 2026. 02. 02(월)부터 02. 13(금)까지.
+			당첨인원 : 매일 100명 추첨.
+			당첨경품 : 네이버페이 1,000원.
+			경품지급 : 매 주 금요일(2월 13일/20일) 당첨자 안내 및 경품 개별발송. *2월 2일부터 8일까지 이벤트 참여 시, 13일 당첨안내. 2월 9일부터 13일까지 이벤트 참여 시, 20일 당첨안내.
+		"
+          />
+        </div>
+        <div>
+          <img
+            src="/event/2026SaveCare/img/2602/notice.jpg"
+            alt="
+			꼭 확인해주세요!
+			· 본 이벤트는 매일 1회 중복 참여가 가능하며, 경품은 매주 금요일 개별 발송 됩니다.
+			· 본 이벤트는 주최 측 사정에 따라 사전 공지 없이, 이벤트 내용이 변경되거나 조기 종료될 수 있습니다.
+			· 개인정보 도용, 오 입력 등 불법적이거나 비정상적인 방법으로 참여 시 당첨은 취소 및 경품을 회수할 수 있습니다.
+			· 경품인 모바일상품권은 수령 후 기간 연장이 불가하며, 응모 시 휴대폰 번호 오 입력, 스팸처리, 문자삭제 등 고객님 개인 사유에 의한 재발송은 불가합니다. (응모 시, 정확한 정보를 입력해 주세요.)
+			· 모바일상품권 재발송 문의: 기프티쇼 1588-0108. (평일 09시~18시/점심 12시~13시 제외)
+			· 이벤트 문의: 02-470-6318 (평일 10시 ~ 17시 /점심 11시30분~13시 제외)
+		"
+          />
+        </div>
+
+        <script>
+          $(document).ready(function () {
+            $("#onlyNumber").on("input", function () {
+              this.value = this.value.replace(/[^0-9]/g, "");
+
+              if (this.value.length === 2) {
+                $(this).blur();
+                event?.preventDefault?.();
+              }
+            });
+          });
+        </script>
+      </form>
     </div>
-
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const img = document.getElementById("testImage");
-        img.addEventListener("click", function () {
-          alert("이미지가 클릭되었습니다!");
-        });
+      $(".number_only").each(function () {
+        enforceNumericInput(this);
       });
+
+      // 숫자만 입력 필터
+      function enforceNumericInput(input) {
+        let lastValue = "";
+
+        $(input).on("beforeinput", function (e) {
+          const inputChar = e.originalEvent.data;
+          if (inputChar && /[^0-9]/.test(inputChar)) {
+            e.preventDefault();
+          }
+        });
+
+        $(input).on("input", function () {
+          const value = input.value;
+          const cursorPos = input.selectionStart;
+
+          const filtered = value.replace(/[^0-9]/g, "");
+
+          if (value !== filtered) {
+            const diff = value.length - filtered.length;
+
+            input.value = filtered;
+            const newPos = Math.max(cursorPos - diff, 0);
+            input.setSelectionRange(newPos, newPos);
+          }
+
+          lastValue = input.value;
+        });
+      }
     </script>
   </body>
 </html>
