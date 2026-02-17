@@ -4,9 +4,7 @@
 
     <iframe
       v-if="iframeSrc"
-      :src="iframeSrc"
-      class="frame"
-      sandbox="allow-scripts"
+      src="https://ktevent.co.kr/event/2026SaveCare/m/index.asp"
     />
   </div>
 </template>
