@@ -2,7 +2,12 @@
   <div class="container">
     <h2>Vue Base64 Iframe Example</h2>
 
-    <iframe v-if="iframeSrc" :src="iframeSrc" class="frame" />
+    <iframe
+      v-if="iframeSrc"
+      :src="iframeSrc"
+      class="frame"
+      sandbox="allow-scripts"
+    />
   </div>
 </template>
 
