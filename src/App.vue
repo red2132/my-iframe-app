@@ -1,71 +1,82 @@
 <template>
-  <div class="container">
-    <h2>Base64 → Blob → Iframe 렌더링</h2>
+  <div class="page">
+    <h1>Vue Nested iframe</h1>
 
-    <iframe
-      v-if="iframeSrc"
-      :src="iframeSrc"
-      class="frame"
-      sandbox="allow-scripts"
-    />
+    <!-- outer iframe -->
+    <iframe ref="outerFrame" class="outer-frame" @load="onOuterLoad"></iframe>
   </div>
 </template>
 
-<script setup>
-import { ref, onMounted, onBeforeUnmount } from "vue";
+<script>
+export default {
+  data() {
+    return {
+      base64Html: "",
+    };
+  },
 
-const iframeSrc = ref(null);
-let objectUrl = null;
+  mounted() {
+    this.loadHtml();
+  },
 
-onMounted(async () => {
-  // 1️⃣ HTML 파일 가져오기
-  const response = await fetch("/embed.html");
-  const htmlText = await response.text();
+  methods: {
+    async loadHtml() {
+      try {
+        const res = await fetch("/embed.html");
+        const text = await res.text();
 
-  // 2️⃣ base64 인코딩
-  const base64 = btoa(unescape(encodeURIComponent(htmlText)));
+        // base64 변환
+        this.base64Html = btoa(unescape(encodeURIComponent(text)));
 
-  // 3️⃣ base64 → 바이너리 변환
-  const byteCharacters = atob(base64);
-  const byteNumbers = new Array(byteCharacters.length);
+        this.renderOuterIframe();
+      } catch (e) {
+        console.error(e);
+      }
+    },
 
-  for (let i = 0; i < byteCharacters.length; i++) {
-    byteNumbers[i] = byteCharacters.charCodeAt(i);
-  }
+    renderOuterIframe() {
+      const outerDoc =
+        this.$refs.outerFrame.contentDocument ||
+        this.$refs.outerFrame.contentWindow.document;
 
-  const byteArray = new Uint8Array(byteNumbers);
+      outerDoc.open();
+      outerDoc.write(`
+        <!DOCTYPE html>
+        <html>
+        <body style="margin:0">
+          <h3>Outer iframe</h3>
 
-  // 4️⃣ Blob 생성
-  const blob = new Blob([byteArray], { type: "text/html" });
+          <iframe 
+            id="innerFrame"
+            style="width:100%;height:300px;border:1px solid #aaa"
+          ></iframe>
 
-  // 5️⃣ Blob URL 생성
-  objectUrl = URL.createObjectURL(blob);
+          <script>
+            const iframe = document.getElementById("innerFrame");
+            iframe.src = "data:text/html;base64,${this.base64Html}";
+          <\/script>
 
-  // 6️⃣ iframe에 적용
-  iframeSrc.value = objectUrl;
-});
+        </body>
+        </html>
+      `);
+      outerDoc.close();
+    },
 
-// 메모리 정리 (중요 ⭐)
-onBeforeUnmount(() => {
-  if (objectUrl) {
-    URL.revokeObjectURL(objectUrl);
-  }
-});
+    onOuterLoad() {
+      // 필요하면 여기서 후처리 가능
+    },
+  },
+};
 </script>
 
 <style>
-.container {
-  text-align: center;
-  padding: 40px;
+.page {
+  padding: 20px;
 }
 
-.frame {
+.outer-frame {
   width: 100%;
-  max-width: 800px;
-  height: 500px;
-  border: none;
-  margin-top: 20px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  height: 400px;
+  border: 2px solid #444;
 }
 </style>
